@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+<h1>Hello Student index page</h1>
+<%= link_to "New Student", new_student_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">College</th>
+      <th scope="col">Degree</th>
+      <th scope="col">Address</th>
+      <th scope="col">Number</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |data| %>
+    <tr>
+      <th scope="row"><%=data.id%></th>
+      <th scope="row"><%=data.name%></th>
+      <th scope="row"><%=data.college%></th>
+      <th scope="row"><%=data.degree%></th>
+      <th scope="row"><%=data.address%></th>
+      <th scope="row"><%=data.number%></th>
+      <th scope="row"><%= link_to "Delete", student_path(data), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></th>
+      <th scope="row"><%= link_to "Update", edit_student_path(data) %></th>
+
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+</body>
+</html>
